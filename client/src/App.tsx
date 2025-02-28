@@ -1,3 +1,15 @@
+import { useEffect, useState } from "react";
+
 export function App() {
-  return <p>this is a test</p>
+  const [todos, setTodos] = useState<any>();
+  useEffect(() => {
+    fetch("/api/todos")
+      .then((data) => {
+        return data.json();
+      })
+      .then((todos) => {
+        setTodos(todos);
+      });
+  });
+  return <pre className="font-mono">{JSON.stringify(todos)}</pre>;
 }
