@@ -6,7 +6,7 @@ ENV NODE_ENV="production"
 
 FROM base AS build
 
-RUN apt-get update -qq && apt-get install -y --no-install-recommends build-essentials
+RUN apt-get update -qq && apt-get install -y --no-install-recommends build-essential pkg-config python-is-python3
 
 COPY --link ./bun.lock ./package.json ./
 RUN bun install --ci
